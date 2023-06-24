@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    height: 100vh;
+    background-image: url('Images/Sceneary.jpg');
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    max-width: 700px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background: linear-gradient(135deg, red, black);
+}
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);   
+}
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.5s ease-in-out;
+}
+.user-details .input-box input:hover{
+    border-color: red;
+}
+form .button{
+    height: 45px;
+    margin: 45px 0;
+}
+form .button input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, red, black);
+}
+form .button input:hover{
+    background: linear-gradient(-135deg, red, black);
+    transition: 0.5s;
+}
+button{
+    width: 100%;
+    background: linear-gradient(-135deg, red, black);
+    color: #fff;
+    font-size: 18.5px;
+    padding: 10px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+}
+button:hover{
+    background: linear-gradient(135deg, red, black);
+    transition: 0.5s;
+}
+a{
+    text-decoration: none;
+    list-style: underline;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    top: 18px;
+    left: 500px;
+}
+a:hover{
+    text-decoration: underline;
+    color: red;
+    transition: 0.10s;
+}
+#prompt{
+    position: relative;
+    top: 40px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* ----------------------------------------Media Queries-------------------------------------------------- */
+@media (max-width: 584px){
+    .container{
+        max-width: 100%;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    /* form .gender-details .category{
+        max-height: 300px;
+        overflow-y: scroll;
+    } */
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+    a{
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        font-weight: 400;
+        position: relative;
+        top: 15px;
+        left: 210px;
+    }
+    #prompt{
+    position: relative;
+    top: 40px;
+    font-size: 15px;
+    font-weight: 400;
+}
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Registration</div>
+        <form action="register.php" method="get">
+                 <div class="user-details">    <!-- for styling  -->
+                <div class="input-box">    <!-- for styling  -->
+                    <span class="details">You Name</span>  
+                    <input type="text" id="input1" placeholder="Enter your name">
+                </div>
+                <div class="input-box">    <!-- for styling  -->
+                    <span class="details">Password</span>
+                    <input type="text" id="input2" placeholder="Enter your password">
+                </div>
+                <div class="input-box">  <!-- for styling  -->
+                    <span class="details">Confirm Password</span>
+                    <input type="text" id="input3" placeholder="Confirm your password">
+                </div>
+                <div class="input-box">    <!-- for styling  -->
+                    <span class="details">E-mail</span>
+                    <input type="text" id="input4" placeholder="Enter your email">
+                </div>
+            </div>
+        <button type="submit" id="btn" onclick="saveData(); return false;">Register</button>
+        <br><span id="prompt">This is prompt</span>
+        </form>
+        <a class="register" href="login.html">Already Registered?</a>
+    </div>
+
+    <script>
+        function saveData() {
+            let unm = document.getElementById('input1');
+            let eml = document.getElementById('input4');
+            let pwd = document.getElementById('input2');
+            let cpwd = document.getElementById('input3');
+            let pr = document.getElementById('prompt');
+            let btnc = document.getElementById('btn');
+            
+            if (unm.value == "" || eml.value == "" || pwd.value == "") {
+                pr.innerHTML = "Please enter all credentials";
+                return;
+            } else {
+                if (pwd.value == cpwd.value) {
+                    btnc.disabled = true;
+                    var ajax_request = new XMLHttpRequest();
+                    ajax_request.open("POST", "register.php", true);
+                    ajax_request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    ajax_request.onreadystatechange = function() {
+
+                        if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                            pr.innerHTML = ajax_request.responseText;
+                            btnc.disabled = false;
+                            unm.value = "";
+                            eml.value = "";
+                            pwd.value = "";
+                            cpwd.value = "";
+                        }
+                    }
+                    ajax_request.send("uname=" + unm.value + "&uemail=" + eml.value + "&upassword=" + pwd.value);
+                } else {
+                    pr.innerHTML = "Password not matching!";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

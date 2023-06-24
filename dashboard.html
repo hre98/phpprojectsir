@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your control</title>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #2b323c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container h1{
+    font-size: 50px;
+    font-weight: 600;
+}
+a{
+    margin: 1% 1%;
+    position: absolute;
+    text-decoration: none;
+    color: white;
+}
+#username{
+    color: green;
+    font-size: 50px;
+    font-weight: 600;
+}
+    </style>
+</head>
+<body onload="loadSession();">
+    <a href="login.html">Go Back</a>
+    <div class="container">
+        <p id="username"></p> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h1>Hello and Welcome to Dashboard.</h1>
+    </div>
+
+    <script>
+        var pr = document.getElementById('username');
+        function loadSession(){
+            console.log('Dashboard Constructor');
+            var sessionReq = "Requested";
+            var session_request = new XMLHttpRequest();
+                        session_request.open("POST", "dashboardSession.php", true);
+                        session_request.onreadystatechange = function(){
+                            if(session_request.readyState == 4 && session_request.status){
+                                pr.innerHTML = session_request.responseText;
+                            }
+                        }
+                        session_request.send("session_request="+sessionReq.value);
+        }
+    </script>
+</body>
+</html>

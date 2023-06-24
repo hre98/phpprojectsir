@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+    <script src="https://kit.fontawesome.com/634234fb3a.js" crossorigin="anonymous"></script>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+#Welcome{
+    height: 100vh;
+    width: 100%;
+    background-image: url('Images/Sceneary.jpg');
+    /* background-size: 100%; */
+    /* background-repeat: no-repeat; */
+    /* overflow: hidden; */
+    background-position: center;
+}
+.container{
+    padding: 10px 100px;
+}
+
+/* --------------------Welcome---------------------------------------------------------- */
+#Welcome{
+    padding: 80px 0;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.col-1{
+    flex-basis: 60%;
+}
+.col-2{
+    flex-basis: 40%;
+}
+
+.welcome{
+    font-size: 50px;
+    color: rgb(244, 237, 237);
+    margin: 45px 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+.slogan{
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: .5px;
+    margin-top: 40px;
+}
+.social-icons{
+    margin-top: 30px;
+    margin-left: 25px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 30px;
+    color: #fff;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-10px);
+}
+.panel{
+    width: 50vh;
+    padding: 15px;
+    margin: 20px 0;
+}
+input{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+input::placeholder{
+    font-size: 1.0rem;
+}
+/* input:focus{
+    outline: 1px solid #1877f2;
+} */
+/* input:focus::placeholder{
+    color: #1877f2;
+} */
+.Login{
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+label{
+    font-size: 22px;
+    color: #fff;
+    font-weight: bolder;
+    margin: 20px;
+}
+.log-in-button{
+    width: 80%;
+    background: linear-gradient(135deg, red, black);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    border-radius: 15px;
+    letter-spacing: 1px;
+}
+.log-in-button:hover{
+    background: linear-gradient(-135deg, red, black);
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
+.forgot{
+    font-size: 0.9rem;
+    color: #fff;
+}
+#prompt{
+    position: relative;
+    top: 40px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+/* <------------------------------------ Media Queries--------------------------------------------> */
+
+@media only screen and (max-width: 600px){
+    .container{
+        padding: 0px 50px;
+    }
+    #Welcome{
+    padding: 10px 10px;
+    }
+    .welcome{
+    font-size: 40px;
+    color: #fff;
+    font-weight: 600;
+
+    }
+    .slogan{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    /* letter-spacing: px; */
+    }
+    .social-icons{
+    margin-left: 10px; 
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    transition: transform 0.5s;
+}
+.panel{
+    height: 40vh;
+    width: 39vh;
+    font-size: 5px;
+    padding: 10px;
+    font-size: 10px;
+}
+input{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+.Login{
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+label{
+    font-size: 20px;
+    color: #fff;
+    font-weight: bolder;
+    margin: 10px;
+}
+input::placeholder{
+    font-size: 0.8rem;
+}
+.log-in-button{
+    width: 65%;
+    background: linear-gradient(135deg, red, black);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: 5px;
+    transition: 0.5s ease-in-out;
+    border-radius: 15px;
+    letter-spacing: 1px;
+}
+.log-in-button:hover{
+    background: linear-gradient(-135deg, red, black);
+}
+.Login{
+    font-size: 30px;
+    letter-spacing: 5px;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
+.forgot{
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+}
+    </style>
+</head>
+<body>
+<div id="Welcome">
+    <div class="container">
+    <div class="row">
+        <div class="col-1">
+        <div class="branding">
+            <h1 class="welcome">Welcome <br>Back</h1>
+            <p class="slogan">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using:</p>
+            </div>
+        <br>&nbsp; &nbsp; &nbsp;
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter-square"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="panel">
+            <p class="Login">Log In</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <form id="my-form">
+                <label for="" class="">First Name</label>
+                <input type="text" name="username" id="input1" placeholder="Username" required>
+                <br><br>
+                <label for="" class="">Password</label>
+                <input type="text" id="input2" placeholder="Enter your password" required>
+                <button type="submit" value="login" class="log-in-button" id="btn" onclick="saveData(); return false;">Login</button>
+                <br><span id="prompt">This is prompt</span>
+         </form>
+                <a class="forgot" href="register.html">Forgotten Password?</a>
+        </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function saveData(){
+        let unm = document.getElementById('input1');
+        let pwd = document.getElementById('input2');
+        let pr = document.getElementById('prompt');
+        let btnc = document.getElementById('btn');
+
+
+        if(unm.value == "" || pwd.value == ""){
+            pr.innerHTML =  "Please  fill all information ";
+            return;
+        } else{
+            btnc.disabled = true;
+            var ajax_request = new XMLHttpRequest();
+            ajax_request.open("POST", "login.php", true);
+            ajax_request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            ajax_request.onreadystatechange = function(){
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                    if(ajax_request.responseText.includes("USER FOUND!!!")){
+                        window.location.replace("dashboard.html");
+                        btnc.disabled = false;
+                        unm.value = "";
+                        pwd.value = "";
+                    }
+                    else
+                        pr.innerHTML = ajax_request.responseText;
+                }
+            }
+            ajax_request.send("uname=" + unm.value + "&upassword=" + pwd.value);
+        }
+    }
+</script>
+</body>
+</html>
